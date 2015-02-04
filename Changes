@@ -2,6 +2,16 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.001 2015-02-04
  - Ported Dancer1 plugin to Dancer2
 
-0.000 - 0000-00-00
+ [API CHANGES]
+
+ [BUG FIXES]
+
+ [DOCUMENTATION]
+
+ [ENHANCEMENTS]
+
+0.000 0000-00-00
+
