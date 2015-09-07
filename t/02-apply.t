@@ -3,10 +3,9 @@
 use Test::Most import => ['!pass'];
 use Plack::Test;
 use HTTP::Request::Common;
-use feature qw(fc);
 
-sub isfc   { is fc(shift),   fc(shift), shift; }
-sub isntfc { isnt fc(shift), fc(shift), shift; }
+sub islc   { is lc(shift),   lc(shift), shift; }
+sub isntlc { isnt lc(shift), lc(shift), shift; }
 
 {
 
@@ -41,20 +40,20 @@ subtest var1 => sub {
     plan tests => 5;
     my $R = $PT->request( GET('/') );
     ok $R->is_success;
-    isfc $R->content                         => 'var1';
-    like $R->header( fc 'Content-Type' )     => qr'^text/html(\s*;.*)?$';
-    isfc $R->header( fc 'Content-Charset' )  => 'iso-8859-1';
-    isfc $R->header( fc 'Content-Language' ) => 'en';
+    islc $R->content                         => 'var1';
+    like $R->header( lc 'Content-Type' )     => qr'^text/html(\s*;.*)?$';
+    islc $R->header( lc 'Content-Charset' )  => 'iso-8859-1';
+    islc $R->header( lc 'Content-Language' ) => 'en';
 };
 
 subtest var2 => sub {
     plan tests => 5;
     my $R = $PT->request( GET( '/', Accept => 'text/plain' ) );
     ok $R->is_success;
-    isfc $R->content                         => 'var2';
-    like $R->header( fc 'Content-Type' )     => qr'^text/plain(\s*;.*)?$';
-    isfc $R->header( fc 'Content-Charset' )  => 'us-ascii';
-    isfc $R->header( fc 'Content-Language' ) => 'no';
+    islc $R->content                         => 'var2';
+    like $R->header( lc 'Content-Type' )     => qr'^text/plain(\s*;.*)?$';
+    islc $R->header( lc 'Content-Charset' )  => 'us-ascii';
+    islc $R->header( lc 'Content-Language' ) => 'no';
 };
 
 done_testing;

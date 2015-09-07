@@ -3,10 +3,9 @@
 use Test::Most import => ['!pass'];
 use Plack::Test;
 use HTTP::Request::Common;
-use feature qw(fc);
 
-sub isfc   { is fc(shift),   fc(shift), shift; }
-sub isntfc { isnt fc(shift), fc(shift), shift; }
+sub islc   { is lc(shift),   lc(shift), shift; }
+sub isntlc { isnt lc(shift), lc(shift), shift; }
 
 {
 
@@ -41,14 +40,14 @@ subtest var1 => sub {
     plan tests => 2;
     my $R = $PT->request( GET('/') );
     ok $R->is_success;
-    isfc $R->content => 'var1';
+    islc $R->content => 'var1';
 };
 
 subtest var2 => sub {
     plan tests => 2;
     my $R = $PT->request( GET( '/', Accept => 'text/plain' ) );
     ok $R->is_success;
-    isfc $R->content => 'var2';
+    islc $R->content => 'var2';
 };
 
 done_testing;
