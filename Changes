@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+ - spit out fc feature
 
 0.001 2015-02-04
  - Ported Dancer1 plugin to Dancer2
